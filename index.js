@@ -43,7 +43,7 @@ app.put("/posts/:id", async (req, res) => {
     const { id } = req.params
     const { likes } = req.query
     try {
-        await updateLikes(likes, id)
+        await actualizarPost(likes, id)
         res.send("Likes modificado")
     } catch ({ code, message }) {
         res.status(code).send(message)
@@ -53,7 +53,7 @@ app.put("/posts/:id", async (req, res) => {
 app.put("/posts/like/:id", async (req, res) => {
     const { id } = req.params
     try {
-        await incrementLikes(id)
+        await incrementarPost(id)
         res.send("Likes aumentados")
     } catch ({ code, message }) {
         res.status(code).send(message)
@@ -62,7 +62,7 @@ app.put("/posts/like/:id", async (req, res) => {
 
 app.delete("/posts/:id", async (req, res) => {
     const { id } = req.params
-    await deletePost(id)
+    await borrarPost(id)
     res.send("Post eliminado")
 })
 

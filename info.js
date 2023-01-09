@@ -22,7 +22,7 @@ const obtenerPost = async () => {
     return rows
 }
 
-const updateLikes = async (likes, id) => {
+const actualizarPost = async (likes, id) => {
     const consulta = "UPDATE posts SET likes = $1 WHERE id = $2"
     const values = [likes, id]
     const { rowCount } = await pool.query(consulta, values)
@@ -31,7 +31,7 @@ const updateLikes = async (likes, id) => {
     }
 }
 
-const incrementLikes = async (id) => {
+const incrementarPost = async (id) => {
     const consulta = "UPDATE posts SET likes = likes + 1 WHERE id = $1"
     const values = [id]
     const { rowCount } = await pool.query(consulta, values)
@@ -41,7 +41,7 @@ const incrementLikes = async (id) => {
 }
 
 
-const deletePost = async (id) => {
+const borrarPost = async (id) => {
     const consulta = "DELETE FROM posts WHERE id = $1"
     const values = [id]
     const result = await pool.query(consulta, values)
